@@ -6,7 +6,7 @@ import * as compression from 'compression';
 import * as rateLimit from 'express-rate-limit';
 
 import { AppModule } from './app.module';
-import { Env } from './shared/services/config/config.service';
+import { CONFIG } from './shared/config/config.provider';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,6 +19,6 @@ async function bootstrap() {
     windowMs: 60 * 1000, // max 100 requests per minute
     max: 100
   }));
-  await app.listen((process.env.NODE_ENV as Env) === 'production' ? 80 : 3000);
+  await app.listen(CONFIG.APP_PORT, CONFIG.APP_HOST);
 }
 bootstrap();

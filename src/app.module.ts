@@ -3,24 +3,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { SharedServicesModule } from './shared/services/shared-services.module';
-import { ConfigService } from './shared/services/config/config.service';
-import { ConfigModule } from './shared/services/config/config.module';
+import { CONFIG } from './shared/config/config.provider';
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
-        host: configService.config.DATABASE_HOST,
-        port: configService.config.DATABASE_PORT,
-        username: configService.config.DATABASE_USER,
-        password: configService.config.DATABASE_PASSWORD,
-        database: configService.config.DATABASE_NAME,
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: configService.isDevEnvironment()
-      }),
-      inject: [ConfigService]
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: CONFIG.DATABASE_HOST,
+      port: CONFIG.DATABASE_PORT,
+      username: CONFIG.DATABASE_USER,
+      password: CONFIG.DATABASE_PASSWORD,
+      database: CONFIG.DATABASE_NAME,
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: CONFIG.isDevEnvironment()
     }),
     SharedServicesModule
   ],
