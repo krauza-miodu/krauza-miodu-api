@@ -69,6 +69,7 @@
     "object-literal-sort-keys": false,
     "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
     "one-variable-per-declaration": true,
+    "ordered-imports": false,
     "prefer-const": true,
     "quotemark": [true, "single", "avoid-escape", "avoid-template"],
     "radix": false,

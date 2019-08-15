@@ -1,5 +1,9 @@
 import { IConfig } from './config.interface';
 
 export const config: IConfig = {
-  EXAMPLE_KEY: 'example_value'
+  DATABASE_HOST: process.env.DATABASE_HOST,
+  DATABASE_PORT: Number(process.env.DATABASE_PORT),
+  DATABASE_NAME: process.env.DATABASE_NAME,
+  DATABASE_USER: process.env.DATABASE_USER,
+  DATABASE_PASSWORD: process.env.DATABASE_PASSWORD
 };
