@@ -13,12 +13,16 @@ async function bootstrap() {
   app.enableCors();
   app.use(helmet());
   app.use(cookieParser());
-  app.use(csurf({cookie: {key: 'XSRF-TOKEN', path: '/'}}));
   app.use(compression());
   app.use(rateLimit({
     windowMs: 60 * 1000, // max 100 requests per minute
     max: 100
   }));
+
+  if (CONFIG.isProdEnvironment()) {
+    app.use(csurf({cookie: {key: 'XSRF-TOKEN', path: '/'}}));
+  }
+
   await app.listen(CONFIG.APP_PORT, CONFIG.APP_HOST);
 }
 bootstrap();
