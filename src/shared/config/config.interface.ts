@@ -12,6 +12,8 @@ export interface IConfig {
   DATABASE_PASSWORD: string;
   DATABASE_NAME: string;
 
+  JWT_SECRET: string;
+
   isDevEnvironment?: () => boolean;
   isProdEnvironment?: () => boolean;
   isTestEnvironment?: () => boolean;

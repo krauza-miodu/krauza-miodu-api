@@ -6,6 +6,8 @@ export const config: IConfig = {
   APP_HOST: 'api.krauzamiodu.pl',
   APP_PORT: 80,
 
+  JWT_SECRET: process.env.JWT_SECRET,
+
   DATABASE_HOST: process.env.DATABASE_HOST,
   DATABASE_PORT: Number(process.env.DATABASE_PORT),
   DATABASE_NAME: process.env.DATABASE_NAME,

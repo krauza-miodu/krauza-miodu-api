@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 import { AppController } from './app.controller';
 import { SharedServicesModule } from './shared/services/shared-services.module';
 import { CONFIG } from './shared/config/config.provider';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+
 
 @Module({
   imports: [
@@ -17,7 +19,9 @@ import { CONFIG } from './shared/config/config.provider';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: CONFIG.isDevEnvironment()
     }),
-    SharedServicesModule
+    SharedServicesModule,
+    AuthModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: []

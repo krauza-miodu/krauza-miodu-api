@@ -6,6 +6,8 @@ export const config: IConfig = {
   APP_HOST: 'api.krauzamiodu.dev',
   APP_PORT: 3000,
 
+  JWT_SECRET: 'secret',
+
   DATABASE_HOST: 'localhost',
   DATABASE_PORT: 3306,
   DATABASE_NAME: 'krauzamiodu',
