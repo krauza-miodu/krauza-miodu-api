@@ -14,9 +14,11 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('example assertion', () => {
-      expect(true).toBe(true);
+  describe('#healthcheck', () => {
+    it('should return status', () => {
+      expect(appController.healthcheck()).toEqual({
+        status: 'OK'
+      });
     });
   });
 });
