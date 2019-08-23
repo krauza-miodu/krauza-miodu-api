@@ -7,6 +7,7 @@ import * as rateLimit from 'express-rate-limit';
 
 import { AppModule } from './app.module';
 import { CONFIG } from './shared/config/config.provider';
+import { AppExceptionFilter } from './shared/exception/exception-filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -22,6 +23,8 @@ async function bootstrap() {
   if (CONFIG.isProdEnvironment()) {
     app.use(csurf({cookie: {key: 'XSRF-TOKEN', path: '/'}}));
   }
+
+  app.useGlobalFilters(new AppExceptionFilter());
 
   await app.listen(CONFIG.APP_PORT, CONFIG.APP_HOST);
 }

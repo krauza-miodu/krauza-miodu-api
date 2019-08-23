@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AppController } from './app.controller';
 import { SharedServicesModule } from './shared/services/shared-services.module';
 import { CONFIG } from './shared/config/config.provider';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-
+import { ProductCategoryModule } from './product-category/product-category.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { UserModule } from './user/user.module';
     }),
     SharedServicesModule,
     AuthModule,
-    UserModule
+    UserModule,
+    ProductCategoryModule
   ],
   controllers: [AppController],
   providers: []
